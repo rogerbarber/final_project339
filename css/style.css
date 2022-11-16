@@ -1,8 +1,26 @@
+/* PAGE FLOW IS AS FOLLOWS:
+ - Whole page, header, nav, and background styling for all types of pages
+ - Mobile (planned for no smaller than 400px view), grid and flex
+ - Tablet (700px + view), grid and flex
+ - Computer (1200px + view), grid and flex
+ - Accessibility media queries & others
+ 
+ I am attempting to group styling as closely as possible for debugging, so most similar selectors should be close to one another. Thanks!*/
+
+
 /* Index and whole-page styling, including nav items and backgrounds */
 
+/* CURRENT PROGRESS: 11/16
+All views are done!
+IMPLEMENT SOURCES FOR ALL CONTENT! (Mostly text stuff)
+Implement funny mouse shape? See if it works.
+Fun items to possibly add after functionality:
+- Lightbox for images (they're huge and would be cool)
+Good luck, future me. <3 */
 
 * {
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -11,29 +29,27 @@ body {
     background-position: center;  /* Parallax effect */
     background-repeat: no-repeat; /* Parallax effect */
     background-size: cover;       /* Parallax effect */
-    height: 400px;                /* Parallax effect */
+    height: 100%;                /* Parallax effect */
 }
-
 
 .skip {
     background-color: white;
     position: absolute;
     top: -30px;
-    z-index: 10;
+    padding: 5px;
 }
-.skip a:focus {
+.skip:focus {
     position: absolute;
     top: 30px;
 }
+
 
 header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     justify-items: center;
-    box-sizing: border-box;
 }
-
 header img {
     grid-column: 3;
     width: 100%;
@@ -42,8 +58,8 @@ header img {
     padding: 2px;
     max-height: 150px;
     max-width: 150px;
+    background-color: rgba(240, 232, 148, 0.6);
 }
-
 header div {
     grid-column: span 2;
     margin: 15px;
@@ -52,12 +68,10 @@ header div {
     background-color: rgb(0, 0, 0, 0.6);
     border-radius: 20px;
 }
-
 header div span {
     font-family: "abril_fatfaceregular", Arial, Helvetica, sans-serif;
     font-size: 300%;
 }
-
 header div p {
     font-size: 15px;
     font-family: Arial, Helvetica, sans-serif
@@ -68,9 +82,6 @@ nav {
     grid-column: 1 / -1;
     width: 90%
 }
-
-
-
 nav li {
     display: inline;
     padding: 6.5px;
@@ -84,6 +95,10 @@ nav li {
     background-color:rgb(182, 237, 115, 0.8);
 }
 
+nav li:hover, nav li:focus {
+    background-color: greenyellow;
+}
+
 a:visited{
     color: black;
 }
@@ -93,7 +108,6 @@ a:link {
 a:hover {
     color: green;
 }
-
 a:active{
     color: rgb(109, 214, 227);
 }
@@ -111,31 +125,35 @@ div.textcaption {
     font-family: "abril_fatfaceregular", Arial, Helvetica, sans-serif;
 }
 
-footer p{
+footer p, a.top{
     background-color: black;
     color: white;
     font-size: 1rem;
     text-align: center;
+    padding: 10px;
 }
 
 div p {
     font-family: "Times New Roman", Arial, Helvetica;
 }
 
-
-/* Grid specific styling on production.html */
-/* ONLY FOR MOBILE VIEW - LARGER SIZES BELOW */
-
 main div {
     margin-top: 2%;
 }
 
 
+/* Grid specific styling on production.html */
+/* ONLY FOR MOBILE VIEW - LARGER SIZES BELOW */
+
+
+
 div.grid-container {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 90%;
     align-items:center;
     justify-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 
 .grid-item img {
@@ -147,7 +165,7 @@ div.grid-container {
 
 .grid-item {
     background-color: rgba(240, 232, 148, 0.6);
-    width: 95%;
+    width: 100%;
     margin: auto;
 }
 
@@ -159,7 +177,6 @@ div.grid-container {
 
 div.textcaption {
     text-align: center;
-
 }
 
 
@@ -167,7 +184,396 @@ div.textcaption {
 /* Flex specific styling */
 /* ONLY FOR MOBILE VIEW - LARGER SIZING BELOW */
 
+div.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
 
+.flex-item img {
+    border: 50px solid black;
+    max-width: 100%;
+    margin: auto;
+    padding: 5%;
+}
+
+.flex-item {
+    background-color: rgba(240, 232, 148, 0.6);
+    width: 95%;
+    margin: auto;
+}
+
+.flex-item p {
+    margin: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    padding-bottom: 30px;
+}
+
+
+/* Tablet (avg screen size 764px wide) */
+@media screen and (min-width: 700px) {
+
+ /* Grid specific styling */
+div.grid-container {
+    grid-template-columns: 30% 30% 30%;
+    justify-content: space-around;
+    grid-row-gap: 10px;
+}
+
+/* Setting stagger effect for index page */
+.coffee_image {
+    grid-area: 1 / 1 / 1 / 1;
+}
+.coffee {
+    grid-area: 1 / 2 / 1 / 4;
+}
+.arabica_image {
+    grid-area: 2 / 3 / 2 / 4;
+}
+.arabica {
+    grid-area: 2 / 1 / 2 / 3;
+}
+.robusta_image {
+    grid-area: 3 / 1 / 3 / 1;
+}
+.robusta {
+    grid-area: 3 / 2 / 3 / 4;
+}
+.farmer_image {
+    grid-area: 4 / 3 / 4 / 4;
+}
+.farmer {
+    grid-area: 4 / 1 / 4 / 3;
+}
+
+
+/* Setting stagger effect for production page */
+.product_image {
+    grid-area: 1 / 1 / 1 / 1;
+}
+
+.product {
+    grid-area: 1 / 2 / 1 / 4;
+}
+
+.anatomy_image {
+    grid-area: 2 / 3 / 2 / 4;
+}
+
+.anatomy {
+    grid-area: 2 / 1 / 2 / 3;
+}
+
+.worker_image {
+    grid-area: 3 / 1 / 3 / 2;
+}
+
+.worker {
+    grid-area: 3 / 2 / 3 / 4;
+}
+
+.drying_image {
+    grid-area: 4 / 3 / 4 / 4;
+}
+
+.drying {
+    grid-area: 4 / 1 / 4 / 3;
+}
+
+.sorting_image {
+    grid-area: 5 / 1 / 5 / 2;
+}
+
+.sorting {
+    grid-area: 5 / 2 / 5 / 4;
+}
+
+.shipping_image {
+    grid-area: 6 / 3 / 6 / 4;
+}
+
+.shipping {
+    grid-area: 6 / 1 / 6 / 3;
+}
+
+.c_image {
+    grid-area: 7 / 1 / 7 / 2;
+}
+
+.e_image {
+    grid-area: 7 / 2 / 7 / 3;
+}
+
+.s_image {
+    grid-area: 7 / 3 / 7 / 4;
+}
+
+
+/* Fixing weird bottom margin issue for img items only */
+div.grid-item img {
+    margin-bottom: -5px;
+    border: 20px solid black;
+}
+
+h1 {
+    font-size: 25px;
+}
+div.textcaption {
+    font-size: 25px;
+}
+
+div.grid-item p {
+    font-size: 15px;
+}
+
+/* Flex specific styling for tablet view */
+
+div.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    row-gap: 10px;
+}
+
+div.flex-item {
+    flex-basis: 48%;
+}
+
+/* Replicating tablet stagger effect in flex using order */
+/* Thank you Dr. van Lent for recommending this! */
+
+div.flex-item:nth-child(1) {
+    order: 1;
+}
+div.flex-item:nth-child(2) {
+    order: 2;
+}
+div.flex-item:nth-child(3) {
+    order: 4;
+}
+div.flex-item:nth-child(4) {
+    order: 3;
+}
+div.flex-item:nth-child(5) {
+    order: 5;
+}
+div.flex-item:nth-child(6) {
+    order: 6;
+}
+div.flex-item:nth-child(7) {
+    order: 8;
+}
+div.flex-item:nth-child(8) {
+    order: 7;
+}
+div.flex-item:nth-child(9) {
+    order: 9;
+}
+div.flex-item:nth-child(10) {
+    order: 10;
+}
+div.flex-item:nth-child(11) {
+    order: 12;
+}
+div.flex-item:nth-child(12) {
+    order: 11;
+}
+div.flex-item:nth-child(13) {
+    order: 13;
+    flex-basis: 32%
+}
+div.flex-item:nth-child(14) {
+    order: 14;
+    flex-basis: 32%;
+}
+div.flex-item:nth-child(15) {
+    order: 15;
+    flex-basis: 32%;
+}
+
+div.flex-item p {
+    font-size: 15px;
+}
+
+/* Fixing bottom margin issue for flex img */
+div.flex-item img {
+    margin-bottom: -5px;
+}
+}
+
+@media screen and (min-width: 1200px) {
+
+    /* Nav and shared styling begins here */
+header div {
+    width: 95%;
+    text-align: center;
+    height: 60%;
+    align-content: center;
+    margin-bottom: -3px;
+}
+header div span {
+    font-size: 450%;
+}
+header div p {
+    font-size: 18px;
+}
+header img {
+    max-width: 250px;
+    max-height: 250px;
+}
+
+header nav li {
+    margin-left: 60px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+header nav {
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+    /* Grid specific styling begins here */
+div.grid-container {
+    grid-template-columns: 23% 23% 23% 23%;
+}
+
+    /* Positioning grid items below (for production page)*/
+
+div.grid-item {
+    width: fit-content;
+}
+div.grid-item img {
+    max-height: 600px;
+}
+
+div.grid-item.product_image {
+    grid-area: 1 / 1 / 1 / 3;
+}
+div.grid-item.anatomy_image {
+    grid-area: 1 / 3 / 1 / 5;
+}
+div.grid-item.product {
+    grid-area: 2 / 1 / 2 / 3;
+}
+div.grid-item.anatomy {
+    grid-area: 2 / 3 / 2 / 5;
+}
+div.grid-item.worker_image {
+    grid-area: 3 / 1 / 3 / 3;
+}
+div.grid-item.drying_image {
+    grid-area: 3 / 3 / 3 / 5;
+}
+div.grid-item.worker {
+    grid-area: 4 / 1 / 4 / 3;
+}
+div.grid-item.drying {
+    grid-area: 4 / 3 / 4 / 5;
+}
+div.grid-item.sorting_image {
+    grid-area: 5 / 1 / 5 / 3;
+}
+div.grid-item.shipping_image {
+    grid-area: 5 / 3 / 5 / 5;
+}
+div.grid-item.sorting {
+    grid-area: 6 / 1 / 6 / 3;
+}
+div.grid-item.shipping {
+    grid-area: 6 / 3 / 6 / 5;
+}
+div.grid-item.c_image {
+    grid-area: 7 / 1 / 7 / 3;
+}
+div.grid-item.costa-rica {
+    grid-area: 7 / 1 / 7 / 3;
+}
+div.grid-item.e_image {
+    grid-area: 7 / 3 / 7 / 5;
+}
+div.grid-item.ethiopia {
+    grid-area: 7 / 3 / 7 / 5;
+}
+div.grid-item.s_image {
+    grid-area: 8 / 2 / 8 / 4;
+}
+div.grid-item.sumatra {
+    grid-area: 8 / 2 / 8 / 4;
+}
+
+    /* Grid styling for index page */
+div.grid-item.coffee_image {
+    grid-area: 1 / 1 / 1 / 3;
+}
+div.grid-item.arabica_image {
+    grid-area: 1 / 3 / 2 / 5;
+}
+div.grid-item.coffee {
+    grid-area: 2 / 1 / 2 / 3;
+}
+div.grid-item.arabica {
+    grid-area: 2 / 3 / 2 / 5;
+}
+div.grid-item.robusta_image {
+    grid-area: 3 / 1 / 3 / 3;
+}
+div.grid-item.farmer_image {
+    grid-area: 3 / 3 / 3 / 5;
+}
+div.grid-item.robusta {
+    grid-area: 4 / 1 / 4 / 3;
+}
+div.grid-item.farmer {
+    grid-area: 4 / 3 / 4 / 5;
+}
+
+    /* Flex styling */
+div.flex-item {
+    flex-basis: 48.5%;
+}
+
+div.flex-item:nth-child(1) {
+    order: 1;
+}
+div.flex-item:nth-child(2) {
+    order: 3;
+}
+div.flex-item:nth-child(3) {
+    order: 2;
+}
+div.flex-item:nth-child(4) {
+    order: 4;
+}
+div.flex-item:nth-child(5) {
+    order: 5;
+}
+div.flex-item:nth-child(6) {
+    order: 7;
+}
+div.flex-item:nth-child(7) {
+    order: 6;
+}
+div.flex-item:nth-child(8) {
+    order: 8;
+}
+div.flex-item:nth-child(9) {
+    order: 9;
+}
+div.flex-item:nth-child(10) {
+    order: 11;
+}
+div.flex-item:nth-child(11) {
+    order: 10;
+}
+div.flex-item:nth-child(12) {
+    order: 12;
+}
+
+
+}
 
 
 
@@ -177,8 +583,13 @@ div.textcaption {
 /* query works 11/10 */
 @media screen and (prefers-reduced-motion: reduce) {
     
+    * {
+        scroll-behavior: auto;
+    }
+
     body {
     background-attachment: unset;
+    background-repeat: repeat;
     }
 
 }

@@ -446,7 +446,7 @@ div.grid-item {
     width: fit-content;
 }
 div.grid-item img {
-    max-height: 600px;
+    max-height: 1000px;
 }
 
 div.grid-item.product_image {

@@ -112,7 +112,7 @@ a:active{
     color: rgb(109, 214, 227);
 }
 
-a.current {
+a.current:link, a.current:visited {
     color: white;
 }
 h1 {

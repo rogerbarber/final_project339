@@ -112,6 +112,9 @@ a:active{
     color: rgb(109, 214, 227);
 }
 
+a.current {
+    color: white;
+}
 h1 {
     margin: 10px;
     font-size: 40px;
